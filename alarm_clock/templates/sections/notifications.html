@@ -1,0 +1,21 @@
+<div class="row" style="margin-left: 16px; margin-right: 16px; height: 32px">
+    <div class="col-6">
+        <h3 class="text-left">Notifications</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <hr>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 28px; margin-left: 16px; margin-right: 16px;">
+    <div class="col">
+        <ul class="list-unstyled">
+            {% for row in notification_manager.render() %}
+                {{ row|safe }}
+            {% else %}
+                <h4 class="text-center">No notifications</h4>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

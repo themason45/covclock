@@ -1,0 +1,80 @@
+<div class="modal fade" id="addAlarmModal" tabindex="-1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add an alarm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="add_alarm_form">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>This will add an alarm at the selected time for the
+                                next {{ number_of_days }}
+                                days</p>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group row">
+                                <label for="time_input" class="col-sm-2 col-form-label">Time:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" name="time" type="time" id="time_input"
+                                           value="{{ shifted_time() }}">
+                                </div>
+                            </div>
+                            <div class="row " style="margin-bottom: 8px">
+                                <div class="col justify-content-center">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input"
+                                               id="audible_announcement_switch"
+                                               data-val="audible_announcement"
+                                               checked>
+                                        <label for="audible_announcement_switch" class="custom-control-label">Make the
+                                            announcement audible</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Please select what information you want to be included in the alarm
+                                        announcement:</p>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="custom-control custom-switch" style="margin-right: 16px">
+                                    <input type="checkbox" class="custom-control-input" id="covid_info_switch"
+                                           data-val="select_covid"
+                                           checked>
+                                    <label class="custom-control-label" for="covid_info_switch">COVID
+                                        info</label>
+                                </div>
+                                <div class="custom-control custom-switch" style="margin-right: 16px">
+                                    <input type="checkbox" class="custom-control-input" id="news_info_switch"
+                                           data-val="select_news">
+                                    <label class="custom-control-label" for="news_info_switch">News
+                                        info</label>
+                                </div>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input"
+                                           id="weather_info_switch" data-val="select_weather">
+                                    <label class="custom-control-label" for="weather_info_switch">Weather
+                                        info</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

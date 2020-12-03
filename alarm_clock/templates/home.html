@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col">
+        <div class="row">
+            <div class="col text-center">
+                <iframe src="http://free.timeanddate.com/clock/i7k63jwf/n1358/tluk/fs32" frameborder="0" width="127"
+                        height="39"></iframe>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'sections/notifications.html' %}
+            </div>
+            <div class="col">
+                {% include 'sections/alarms.html' %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        setInterval(() => {
+                $.ajax({
+                    url: "{{ url_for('run_scheduler') }}",
+                    success: (data) => {
+                        if (data["should_reset"]) {
+                            location.reload()
+                        }
+                    }
+                })
+            },
+            {{ refresh_delay }});
+
+        $(() => {
+            let form = $("#add_alarm_form")
+            form.submit((e) => {
+                e.preventDefault()
+                let checked_boxes = form.find("input:checked")
+                let checked_items = []
+
+                checked_boxes.each(function () {
+                    checked_items.push($(this).data("val"));
+                });
+
+                $.ajax({
+                    url: "{{ url_for('set_alarm') }}",
+                    method: "POST",
+                    dataType: "json",
+                    data: {
+                        time: form.find("input[name='time']").val(),
+                        select_covid: checked_items.includes("select_covid"),
+                        select_news: checked_items.includes("select_news"),
+                        select_weather: checked_items.includes("select_weather"),
+                        audible_announcement: checked_items.includes("audible_announcement"),
+                    },
+                    success: () => {
+                        location.reload()
+                    }
+                })
+            });
+        });
+    </script>
+{% endblock %}

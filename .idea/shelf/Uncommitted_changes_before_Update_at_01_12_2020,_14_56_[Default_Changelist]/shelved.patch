@@ -1,0 +1,188 @@
+Index: alarm_clock/alarm/manager.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"\nThis module contains the class for the alarm manager. This contains a list that persists for\n the lifetime of the app.\n\nOne handy thing that this allows for is much easier persistent storage in a database if required.\n\"\"\"\nimport logging\nfrom datetime import datetime\n\nfrom alarm_clock.alarm.models import Alarm, scheduler\n\nlogger = logging.getLogger(__name__)\n\n\nclass AlarmManager:\n    \"\"\"\n    A simple object which solely maintains a list of alarms for the lifetime of the app instance\n    \"\"\"\n    active_alarms = []  # type: list\n    scheduler = scheduler  # type: scheduler.__class__\n    trigger_refresh = False  # type: bool\n    # Used by the views file. Dictates whether the browser should refresh to update info\n    test_mode = True  # type: bool\n\n    def __init__(self, add_placeholder_alarms=False, test_mode=True):\n        if add_placeholder_alarms:\n            self.active_alarms = [Alarm(datetime.now())]\n        self.test_mode = test_mode\n\n    def get(self):\n        \"\"\"\n        Returns a list of all Alarm objects\n\n        :return: List of :class:`.Alarm` instances\n        \"\"\"\n        return self.active_alarms\n\n    def set(self, time, include_covid=True, include_news=True, include_weather=True, is_audible=False):\n        \"\"\"\n        Creates and sets alarm objects (including schedulers)\n\n        :param is_audible: Is the alarm to be an audible announcement\n        :param time: What time should the notification/announcement go off?\n\n        Should the notification/announcement include:\n\n        :param include_covid: COVID\n        :param include_news: News\n        :param include_weather: Weather\n        :return: The index in the active alarm list\n        :rtype: int\n        \"\"\"\n        # noinspection PyBroadException\n        try:\n            alarm = Alarm(time, include_covid=include_covid, include_news=include_news, include_weather=include_weather,\n                          announcement=is_audible, test_mode=self.test_mode)\n            self.active_alarms.append(alarm)\n            return self.active_alarms.index(alarm)\n        except Exception as e:\n            logger.error(e)\n            return -1\n\n    def unset(self, index):\n        \"\"\"\n        Remove the :class:`.Alarm` instance from the active_alarms list\n\n        :param index: Index of the alarm in the active alarms list\n        :return: The success status\n        :rtype: bool\n        \"\"\"\n        try:\n            alarm = self.active_alarms[int(index)]\n            if not self.test_mode:\n                alarm.clear_schedule()\n            self.active_alarms.pop(int(index))\n            return True\n        except IndexError:\n            return False\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- alarm_clock/alarm/manager.py	(revision d11276eb0ac6abfbc755144013bf7a70cb75b504)
++++ alarm_clock/alarm/manager.py	(date 1606780465661)
+@@ -20,9 +20,9 @@
+     scheduler = scheduler  # type: scheduler.__class__
+     trigger_refresh = False  # type: bool
+     # Used by the views file. Dictates whether the browser should refresh to update info
+-    test_mode = True  # type: bool
++    test_mode = False  # type: bool
+ 
+-    def __init__(self, add_placeholder_alarms=False, test_mode=True):
++    def __init__(self, add_placeholder_alarms=False, test_mode=False):
+         if add_placeholder_alarms:
+             self.active_alarms = [Alarm(datetime.now())]
+         self.test_mode = test_mode
+Index: requirements.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>alabaster==0.7.12\nastroid==2.4.2\nattrs==20.3.0\nBabel==2.9.0\ncertifi==2020.6.20\nchardet==3.0.4\nclick==7.1.2\nFlask==1.1.2\nidna==2.10\nimagesize==1.2.0\niniconfig==1.1.1\nisort==5.6.4\nitsdangerous==1.1.0\nJinja2==2.11.2\nlazy-object-proxy==1.4.3\nMarkupSafe==1.1.1\nmccabe==0.6.1\npackaging==20.4\npluggy==0.13.1\npy==1.9.0\nPygments==2.7.2\npylint==2.6.0\npyparsing==2.4.7\npytest==6.1.2\npytest-dotenv==0.5.2\npython-dotenv==0.15.0\npyttsx3==2.90\npytz==2020.4\nrequests==2.24.0\nsix==1.15.0\nsnowballstemmer==2.0.0\ntoml==0.10.2\nurllib3==1.25.11\nWerkzeug==1.0.1\nwrapt==1.12.1\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- requirements.txt	(revision d11276eb0ac6abfbc755144013bf7a70cb75b504)
++++ requirements.txt	(date 1606784598900)
+@@ -5,6 +5,7 @@
+ certifi==2020.6.20
+ chardet==3.0.4
+ click==7.1.2
++docutils==0.16
+ Flask==1.1.2
+ idna==2.10
+ imagesize==1.2.0
+@@ -20,6 +21,135 @@
+ py==1.9.0
+ Pygments==2.7.2
+ pylint==2.6.0
++pyobjc==7.0.1
++pyobjc-core==7.0.1
++pyobjc-framework-Accessibility==7.0.1
++pyobjc-framework-Accounts==7.0.1
++pyobjc-framework-AddressBook==7.0.1
++pyobjc-framework-AdSupport==7.0.1
++pyobjc-framework-AppleScriptKit==7.0.1
++pyobjc-framework-AppleScriptObjC==7.0.1
++pyobjc-framework-ApplicationServices==7.0.1
++pyobjc-framework-AppTrackingTransparency==7.0.1
++pyobjc-framework-AuthenticationServices==7.0.1
++pyobjc-framework-AutomaticAssessmentConfiguration==7.0.1
++pyobjc-framework-Automator==7.0.1
++pyobjc-framework-AVFoundation==7.0.1
++pyobjc-framework-AVKit==7.0.1
++pyobjc-framework-BusinessChat==7.0.1
++pyobjc-framework-CalendarStore==7.0.1
++pyobjc-framework-CallKit==7.0.1
++pyobjc-framework-CFNetwork==7.0.1
++pyobjc-framework-ClassKit==7.0.1
++pyobjc-framework-CloudKit==7.0.1
++pyobjc-framework-Cocoa==7.0.1
++pyobjc-framework-Collaboration==7.0.1
++pyobjc-framework-ColorSync==7.0.1
++pyobjc-framework-Contacts==7.0.1
++pyobjc-framework-ContactsUI==7.0.1
++pyobjc-framework-CoreAudio==7.0.1
++pyobjc-framework-CoreAudioKit==7.0.1
++pyobjc-framework-CoreBluetooth==7.0.1
++pyobjc-framework-CoreData==7.0.1
++pyobjc-framework-CoreHaptics==7.0.1
++pyobjc-framework-CoreLocation==7.0.1
++pyobjc-framework-CoreMedia==7.0.1
++pyobjc-framework-CoreMediaIO==7.0.1
++pyobjc-framework-CoreMIDI==7.0.1
++pyobjc-framework-CoreML==7.0.1
++pyobjc-framework-CoreMotion==7.0.1
++pyobjc-framework-CoreServices==7.0.1
++pyobjc-framework-CoreSpotlight==7.0.1
++pyobjc-framework-CoreText==7.0.1
++pyobjc-framework-CoreWLAN==7.0.1
++pyobjc-framework-CryptoTokenKit==7.0.1
++pyobjc-framework-DeviceCheck==7.0.1
++pyobjc-framework-DictionaryServices==7.0.1
++pyobjc-framework-DiscRecording==7.0.1
++pyobjc-framework-DiscRecordingUI==7.0.1
++pyobjc-framework-DiskArbitration==7.0.1
++pyobjc-framework-DVDPlayback==7.0.1
++pyobjc-framework-EventKit==7.0.1
++pyobjc-framework-ExceptionHandling==7.0.1
++pyobjc-framework-ExecutionPolicy==7.0.1
++pyobjc-framework-ExternalAccessory==7.0.1
++pyobjc-framework-FileProvider==7.0.1
++pyobjc-framework-FileProviderUI==7.0.1
++pyobjc-framework-FinderSync==7.0.1
++pyobjc-framework-FSEvents==7.0.1
++pyobjc-framework-GameCenter==7.0.1
++pyobjc-framework-GameController==7.0.1
++pyobjc-framework-GameKit==7.0.1
++pyobjc-framework-GameplayKit==7.0.1
++pyobjc-framework-ImageCaptureCore==7.0.1
++pyobjc-framework-IMServicePlugIn==7.0.1
++pyobjc-framework-InputMethodKit==7.0.1
++pyobjc-framework-InstallerPlugins==7.0.1
++pyobjc-framework-InstantMessage==7.0.1
++pyobjc-framework-Intents==7.0.1
++pyobjc-framework-IOSurface==7.0.1
++pyobjc-framework-iTunesLibrary==7.0.1
++pyobjc-framework-KernelManagement==7.0.1
++pyobjc-framework-LatentSemanticMapping==7.0.1
++pyobjc-framework-LaunchServices==7.0.1
++pyobjc-framework-libdispatch==7.0.1
++pyobjc-framework-LinkPresentation==7.0.1
++pyobjc-framework-LocalAuthentication==7.0.1
++pyobjc-framework-MapKit==7.0.1
++pyobjc-framework-MediaAccessibility==7.0.1
++pyobjc-framework-MediaLibrary==7.0.1
++pyobjc-framework-MediaPlayer==7.0.1
++pyobjc-framework-MediaToolbox==7.0.1
++pyobjc-framework-Metal==7.0.1
++pyobjc-framework-MetalKit==7.0.1
++pyobjc-framework-MetalPerformanceShaders==7.0.1
++pyobjc-framework-MetalPerformanceShadersGraph==7.0.1
++pyobjc-framework-MLCompute==7.0.1
++pyobjc-framework-ModelIO==7.0.1
++pyobjc-framework-MultipeerConnectivity==7.0.1
++pyobjc-framework-NaturalLanguage==7.0.1
++pyobjc-framework-NetFS==7.0.1
++pyobjc-framework-Network==7.0.1
++pyobjc-framework-NetworkExtension==7.0.1
++pyobjc-framework-NotificationCenter==7.0.1
++pyobjc-framework-OpenDirectory==7.0.1
++pyobjc-framework-OSAKit==7.0.1
++pyobjc-framework-OSLog==7.0.1
++pyobjc-framework-PassKit==7.0.1
++pyobjc-framework-PencilKit==7.0.1
++pyobjc-framework-Photos==7.0.1
++pyobjc-framework-PhotosUI==7.0.1
++pyobjc-framework-PreferencePanes==7.0.1
++pyobjc-framework-PushKit==7.0.1
++pyobjc-framework-Quartz==7.0.1
++pyobjc-framework-QuickLookThumbnailing==7.0.1
++pyobjc-framework-ReplayKit==7.0.1
++pyobjc-framework-SafariServices==7.0.1
++pyobjc-framework-SceneKit==7.0.1
++pyobjc-framework-ScreenSaver==7.0.1
++pyobjc-framework-ScreenTime==7.0.1
++pyobjc-framework-ScriptingBridge==7.0.1
++pyobjc-framework-SearchKit==7.0.1
++pyobjc-framework-Security==7.0.1
++pyobjc-framework-SecurityFoundation==7.0.1
++pyobjc-framework-SecurityInterface==7.0.1
++pyobjc-framework-ServiceManagement==7.0.1
++pyobjc-framework-Social==7.0.1
++pyobjc-framework-SoundAnalysis==7.0.1
++pyobjc-framework-Speech==7.0.1
++pyobjc-framework-SpriteKit==7.0.1
++pyobjc-framework-StoreKit==7.0.1
++pyobjc-framework-SyncServices==7.0.1
++pyobjc-framework-SystemConfiguration==7.0.1
++pyobjc-framework-SystemExtensions==7.0.1
++pyobjc-framework-UniformTypeIdentifiers==7.0.1
++pyobjc-framework-UserNotifications==7.0.1
++pyobjc-framework-UserNotificationsUI==7.0.1
++pyobjc-framework-VideoSubscriberAccount==7.0.1
++pyobjc-framework-VideoToolbox==7.0.1
++pyobjc-framework-Virtualization==7.0.1
++pyobjc-framework-Vision==7.0.1
++pyobjc-framework-WebKit==7.0.1
+ pyparsing==2.4.7
+ pytest==6.1.2
+ pytest-dotenv==0.5.2
+@@ -29,6 +159,13 @@
+ requests==2.24.0
+ six==1.15.0
+ snowballstemmer==2.0.0
++Sphinx==3.3.1
++sphinxcontrib-applehelp==1.0.2
++sphinxcontrib-devhelp==1.0.2
++sphinxcontrib-htmlhelp==1.0.3
++sphinxcontrib-jsmath==1.0.1
++sphinxcontrib-qthelp==1.0.3
++sphinxcontrib-serializinghtml==1.1.4
+ toml==0.10.2
+ urllib3==1.25.11
+ Werkzeug==1.0.1

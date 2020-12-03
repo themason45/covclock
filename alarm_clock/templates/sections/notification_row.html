@@ -1,0 +1,27 @@
+<div class="card" style="margin-bottom: 16px;">
+    <div class="card-header container-fluid">
+        <div class="row">
+            <div class="col-10" style="height: 30px"><h5 style="margin-bottom: 0">{{ item.title }}</h5></div>
+            <div class="col-2 text-right" style="height: 30px">
+                <button class="btn" onclick='$.ajax({
+                        url: "{{ url_for("delete_notification", notification_index=index) }}",
+                        method: "DELETE",
+                        success: (resp) => {console.log(resp); if (resp["status"] === "success") {location.reload()}}}
+                        );' style="margin-right: 8px; padding: 0;">
+                    <span class="material-icons">delete_outline</span></button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        {% if item.has_image %}
+            <a href="{{ item.action }}">
+                <img src="{{ item.image_src }}" class="img-fluid rounded"
+                     alt="Responsive image" width="100%">
+            </a>
+        {% endif %}
+        <p class="card-text">{{ item.content|safe }}</p>
+        {% if item.action %}
+            <a href="{{ item.action }}" class="btn btn-outline-primary">View More</a>
+        {% endif %}
+    </div>
+</div>

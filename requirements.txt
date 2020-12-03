@@ -1,0 +1,5 @@
+pyttsx3~=2.90
+requests~=2.24.0
+Flask~=1.1.2
+python-dotenv~=0.15.0
+pytest-dotenv==0.5.2

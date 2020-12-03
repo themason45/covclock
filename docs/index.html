@@ -1,0 +1,613 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alarm Clock documentation &#8212; ca3_alarm_clock  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">ca3_alarm_clock  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Alarm Clock documentation</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="alarm-clock-documentation">
+<h1>Alarm Clock documentation<a class="headerlink" href="#alarm-clock-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<div class="section" id="modules">
+<h2>Modules:<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-alarm_clock.alarm.models">
+<span id="alarm-clock-alarm-models"></span><h3>alarm_clock.alarm.models<a class="headerlink" href="#module-alarm_clock.alarm.models" title="Permalink to this headline">¶</a></h3>
+<p>This module contains the model for the alarm object, which contains the method
+that gets fired when a scheduled event is triggered.</p>
+<p>This module also contains the project scheduler instance.</p>
+<p>Written By: Sam Mason
+Date: Nov 2020</p>
+<dl class="py class">
+<dt id="alarm_clock.alarm.models.Alarm">
+<em class="property">class </em><code class="sig-prename descclassname">alarm_clock.alarm.models.</code><code class="sig-name descname">Alarm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">selected_time</span><span class="p">:</span> <span class="n">None.datetime.time</span></em>, <em class="sig-param"><span class="n">include_news</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">include_weather</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">include_covid</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">announcement</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">test_mode</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.alarm.models.Alarm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encapsulates all the functions around alarms</p>
+<dl class="py method">
+<dt id="alarm_clock.alarm.models.Alarm.alarm_action">
+<em class="property">static </em><code class="sig-name descname">alarm_action</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">curr_time</span><span class="p">:</span> <span class="n">datetime.datetime</span></em>, <em class="sig-param"><span class="n">alarm_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.alarm_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do the alarmy-processing.</p>
+<p>At the end of this, the alarm notifies the Notification manager of the new updates.</p>
+<p>This also returns the data that would be used for notifications,
+and the tts, so that the Unit Tests can check it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alarm_obj</strong> (<a class="reference internal" href="#alarm_clock.alarm.models.Alarm" title="alarm_clock.alarm.models.Alarm"><em>Alarm</em></a>) – </p></li>
+<li><p><strong>curr_time</strong> (<em>datetime.time</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If Alarm.test_mode is True, it returns the information, and sentences</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.alarm.models.Alarm.announcement">
+<code class="sig-name descname">announcement</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.announcement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.alarm.models.Alarm.clear_schedule">
+<code class="sig-name descname">clear_schedule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.clear_schedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears all the <cite>sched</cite> events from the schedule,
+used when deleting the alarm. Prevents any extra alarms
+going off</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.alarm.models.Alarm.event_objects">
+<code class="sig-name descname">event_objects</code><em class="property">: list</em><em class="property"> = []</em><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.event_objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.alarm.models.Alarm.has_briefings">
+<em class="property">property </em><code class="sig-name descname">has_briefings</code><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.has_briefings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shortcut to check if the Alarm is going to notify and/or announce any information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether the Alarm has briefings</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.alarm.models.Alarm.include_covid">
+<code class="sig-name descname">include_covid</code><em class="property">: bool</em><em class="property"> = True</em><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.include_covid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.alarm.models.Alarm.include_news">
+<code class="sig-name descname">include_news</code><em class="property">: bool</em><em class="property"> = True</em><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.include_news" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.alarm.models.Alarm.include_weather">
+<code class="sig-name descname">include_weather</code><em class="property">: bool</em><em class="property"> = True</em><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.include_weather" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.alarm.models.Alarm.set_schedule">
+<code class="sig-name descname">set_schedule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.set_schedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the alarm to the <cite>sched</cite> schedule.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.alarm.models.Alarm.test_mode">
+<code class="sig-name descname">test_mode</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.test_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.alarm.models.Alarm.time">
+<em class="property">property </em><code class="sig-name descname">time</code><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the datetime.time object for pretty printing later</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The time object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>datetime.time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.alarm.models.Alarm.time_obj">
+<code class="sig-name descname">time_obj</code><em class="property">: datetime.time</em><em class="property"> = None</em><a class="headerlink" href="#alarm_clock.alarm.models.Alarm.time_obj" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alarm_clock.alarm.manager">
+<span id="alarm-clock-alarm-manager"></span><h3>alarm_clock.alarm.manager<a class="headerlink" href="#module-alarm_clock.alarm.manager" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>This module contains the class for the alarm manager. This contains a list that persists for</dt><dd><p>the lifetime of the app.</p>
+</dd>
+</dl>
+<p>One handy thing that this allows for is much easier persistent storage in a database if required.</p>
+<p>Written By: Sam Mason
+Date: Nov 2020</p>
+<dl class="py class">
+<dt id="alarm_clock.alarm.manager.AlarmManager">
+<em class="property">class </em><code class="sig-prename descclassname">alarm_clock.alarm.manager.</code><code class="sig-name descname">AlarmManager</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">add_placeholder_alarms</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">test_mode</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.alarm.manager.AlarmManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A simple object which solely maintains a list of alarms for the lifetime of the app instance</p>
+<dl class="py attribute">
+<dt id="alarm_clock.alarm.manager.AlarmManager.active_alarms">
+<code class="sig-name descname">active_alarms</code><em class="property">: list</em><em class="property"> = []</em><a class="headerlink" href="#alarm_clock.alarm.manager.AlarmManager.active_alarms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.alarm.manager.AlarmManager.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.alarm.manager.AlarmManager.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all Alarm objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of <a class="reference internal" href="#alarm_clock.alarm.models.Alarm" title="alarm_clock.alarm.models.Alarm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Alarm</span></code></a> instances</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.alarm.manager.AlarmManager.scheduler">
+<code class="sig-name descname">scheduler</code><em class="property">: scheduler.__class__</em><em class="property"> = &lt;sched.scheduler object&gt;</em><a class="headerlink" href="#alarm_clock.alarm.manager.AlarmManager.scheduler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.alarm.manager.AlarmManager.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">include_covid</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">include_news</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">include_weather</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">is_audible</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.alarm.manager.AlarmManager.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and sets alarm objects (including schedulers)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>is_audible</strong> – Is the alarm to be an audible announcement</p></li>
+<li><p><strong>time</strong> – What time should the notification/announcement go off?</p></li>
+</ul>
+</dd>
+</dl>
+<p>Should the notification/announcement include:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>include_covid</strong> – COVID</p></li>
+<li><p><strong>include_news</strong> – News</p></li>
+<li><p><strong>include_weather</strong> – Weather</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The index in the active alarm list</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.alarm.manager.AlarmManager.test_mode">
+<code class="sig-name descname">test_mode</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#alarm_clock.alarm.manager.AlarmManager.test_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.alarm.manager.AlarmManager.trigger_refresh">
+<code class="sig-name descname">trigger_refresh</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#alarm_clock.alarm.manager.AlarmManager.trigger_refresh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.alarm.manager.AlarmManager.unset">
+<code class="sig-name descname">unset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.alarm.manager.AlarmManager.unset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the <a class="reference internal" href="#alarm_clock.alarm.models.Alarm" title="alarm_clock.alarm.models.Alarm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Alarm</span></code></a> instance from the active_alarms list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – Index of the alarm in the active alarms list</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The success status</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alarm_clock.information.models">
+<span id="alarm-clock-information-models"></span><h3>alarm_clock.information.models<a class="headerlink" href="#module-alarm_clock.information.models" title="Permalink to this headline">¶</a></h3>
+<p>This module contains classes for all the API response related items.
+It contains one struct for news items, and two objects for Covid and Weather updates,
+which self populate with the API response.</p>
+<dl class="py class">
+<dt id="alarm_clock.information.models.CovidUpdate">
+<em class="property">class </em><code class="sig-prename descclassname">alarm_clock.information.models.</code><code class="sig-name descname">CovidUpdate</code><a class="headerlink" href="#alarm_clock.information.models.CovidUpdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Stores the data for a single COVID Update</p>
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.CovidUpdate.LOCAL_PAYLOAD">
+<code class="sig-name descname">LOCAL_PAYLOAD</code><em class="property">: dict</em><em class="property"> = {'areaCode': 'E10000008', 'areaType': 'utla', 'format': 'json', 'metric': ['newCasesByPublishDate', 'cumDeaths28DaysByPublishDate', 'newDeaths28DaysByPublishDate']}</em><a class="headerlink" href="#alarm_clock.information.models.CovidUpdate.LOCAL_PAYLOAD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.CovidUpdate.NATIONAL_PAYLOAD">
+<code class="sig-name descname">NATIONAL_PAYLOAD</code><em class="property">: dict</em><em class="property"> = {'areaType': 'overview', 'format': 'json', 'metric': ['newCasesByPublishDate', 'cumDeaths28DaysByPublishDate', 'newDeaths28DaysByPublishDate']}</em><a class="headerlink" href="#alarm_clock.information.models.CovidUpdate.NATIONAL_PAYLOAD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.CovidUpdate.cum_cases">
+<code class="sig-name descname">cum_cases</code><em class="property">: int</em><em class="property"> = -1</em><a class="headerlink" href="#alarm_clock.information.models.CovidUpdate.cum_cases" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.CovidUpdate.cum_deaths">
+<code class="sig-name descname">cum_deaths</code><em class="property">: int</em><em class="property"> = -1</em><a class="headerlink" href="#alarm_clock.information.models.CovidUpdate.cum_deaths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.CovidUpdate.local">
+<code class="sig-name descname">local</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#alarm_clock.information.models.CovidUpdate.local" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.CovidUpdate.new_cases">
+<code class="sig-name descname">new_cases</code><em class="property">: int</em><em class="property"> = -1</em><a class="headerlink" href="#alarm_clock.information.models.CovidUpdate.new_cases" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.CovidUpdate.new_deaths">
+<code class="sig-name descname">new_deaths</code><em class="property">: int</em><em class="property"> = -1</em><a class="headerlink" href="#alarm_clock.information.models.CovidUpdate.new_deaths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.information.models.CovidUpdate.populate">
+<em class="property">static </em><code class="sig-name descname">populate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">local</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.information.models.CovidUpdate.populate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a CovidUpdate instance with data straight from the API, and return this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A populated <a class="reference internal" href="#alarm_clock.information.models.CovidUpdate" title="alarm_clock.information.models.CovidUpdate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CovidUpdate</span></code></a> instance</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#alarm_clock.information.models.CovidUpdate" title="alarm_clock.information.models.CovidUpdate">CovidUpdate</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="alarm_clock.information.models.NewsItem">
+<em class="property">class </em><code class="sig-prename descclassname">alarm_clock.information.models.</code><code class="sig-name descname">NewsItem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i_json</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.information.models.NewsItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Stores the data for a single News Item</p>
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.NewsItem.description">
+<code class="sig-name descname">description</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#alarm_clock.information.models.NewsItem.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.NewsItem.img_source">
+<code class="sig-name descname">img_source</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#alarm_clock.information.models.NewsItem.img_source" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.information.models.NewsItem.serialize">
+<code class="sig-name descname">serialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.information.models.NewsItem.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the NewsItem JSON readable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A serialized version of the instance</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.NewsItem.source_name">
+<code class="sig-name descname">source_name</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#alarm_clock.information.models.NewsItem.source_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.NewsItem.title">
+<code class="sig-name descname">title</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#alarm_clock.information.models.NewsItem.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.NewsItem.url">
+<code class="sig-name descname">url</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#alarm_clock.information.models.NewsItem.url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="alarm_clock.information.models.WeatherUpdate">
+<em class="property">class </em><code class="sig-prename descclassname">alarm_clock.information.models.</code><code class="sig-name descname">WeatherUpdate</code><a class="headerlink" href="#alarm_clock.information.models.WeatherUpdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Stores the data for a single Weather Update</p>
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.WeatherUpdate.description">
+<code class="sig-name descname">description</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#alarm_clock.information.models.WeatherUpdate.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.information.models.WeatherUpdate.populate">
+<em class="property">static </em><code class="sig-name descname">populate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.information.models.WeatherUpdate.populate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a WeatherUpdate instance with data straight from the API, and return this object</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.WeatherUpdate.precip_chance">
+<code class="sig-name descname">precip_chance</code><em class="property">: float</em><em class="property"> = 0.0</em><a class="headerlink" href="#alarm_clock.information.models.WeatherUpdate.precip_chance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.information.models.WeatherUpdate.serialize">
+<code class="sig-name descname">serialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.information.models.WeatherUpdate.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the WeatherUpdate JSON readable</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.models.WeatherUpdate.temp">
+<code class="sig-name descname">temp</code><em class="property">: float</em><em class="property"> = 0.0</em><a class="headerlink" href="#alarm_clock.information.models.WeatherUpdate.temp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alarm_clock.information.manager">
+<span id="alarm-clock-information-manager"></span><h3>alarm_clock.information.manager<a class="headerlink" href="#module-alarm_clock.information.manager" title="Permalink to this headline">¶</a></h3>
+<p>This module contains the manager for NewsItems. This creates,
+and returns a list of the latest news stories.
+However, this is not persistent for the lifetime of the app.</p>
+<p>In order to make it more efficient overall a persistent local cache
+of news items could be created, however, it would
+be difficult to keep track of which stories have already been collected.</p>
+<dl class="py class">
+<dt id="alarm_clock.information.manager.NewsManager">
+<em class="property">class </em><code class="sig-prename descclassname">alarm_clock.information.manager.</code><code class="sig-name descname">NewsManager</code><a class="headerlink" href="#alarm_clock.information.manager.NewsManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages news stories, retrieving them from an open web service</p>
+<dl class="py method">
+<dt id="alarm_clock.information.manager.NewsManager.get_stories">
+<code class="sig-name descname">get_stories</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">count</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.information.manager.NewsManager.get_stories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of news stories from the news api, then create NewItem objects based on them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of <a class="reference internal" href="#alarm_clock.information.models.NewsItem" title="alarm_clock.information.models.NewsItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">alarm_clock.information.models.NewsItem</span></code></a> instances</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.information.manager.NewsManager.stories">
+<code class="sig-name descname">stories</code><em class="property"> = []</em><a class="headerlink" href="#alarm_clock.information.manager.NewsManager.stories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alarm_clock.notifications.models">
+<span id="alarm-clock-notifications-models"></span><h3>alarm_clock.notifications.models<a class="headerlink" href="#module-alarm_clock.notifications.models" title="Permalink to this headline">¶</a></h3>
+<p>This contains a model for a notification, and a method to render this notification in html</p>
+<dl class="py class">
+<dt id="alarm_clock.notifications.models.Notification">
+<em class="property">class </em><code class="sig-prename descclassname">alarm_clock.notifications.models.</code><code class="sig-name descname">Notification</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">content</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">image_src</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.notifications.models.Notification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A Notification object and associated methods</p>
+<dl class="py attribute">
+<dt id="alarm_clock.notifications.models.Notification.action">
+<code class="sig-name descname">action</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#alarm_clock.notifications.models.Notification.action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.notifications.models.Notification.content">
+<code class="sig-name descname">content</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#alarm_clock.notifications.models.Notification.content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.notifications.models.Notification.has_image">
+<em class="property">property </em><code class="sig-name descname">has_image</code><a class="headerlink" href="#alarm_clock.notifications.models.Notification.has_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether the Notification has an image source</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return bool</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.notifications.models.Notification.image_src">
+<code class="sig-name descname">image_src</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#alarm_clock.notifications.models.Notification.image_src" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.notifications.models.Notification.render_notification">
+<code class="sig-name descname">render_notification</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#alarm_clock.notifications.models.Notification.render_notification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render the notification’s list item, and return the HTML string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – Notification index</p>
+</dd>
+<dt class="field-even">Return str</dt>
+<dd class="field-even"><p>HTML string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="alarm_clock.notifications.models.Notification.title">
+<code class="sig-name descname">title</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#alarm_clock.notifications.models.Notification.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alarm_clock.notifications.manager">
+<span id="alarm-clock-notifications-manager"></span><h3>alarm_clock.notifications.manager<a class="headerlink" href="#module-alarm_clock.notifications.manager" title="Permalink to this headline">¶</a></h3>
+<p>This module contains the class for the notification manager. This contains a list that persists for
+the lifetime of the app.</p>
+<p>One handy thing that this allows for is much easier persistent storage in a database if required.</p>
+<p>Written by Sam Mason, Nov 2020</p>
+<dl class="py class">
+<dt id="alarm_clock.notifications.manager.NotificationManager">
+<em class="property">class </em><code class="sig-prename descclassname">alarm_clock.notifications.manager.</code><code class="sig-name descname">NotificationManager</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">add_placeholders</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.notifications.manager.NotificationManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class which encapsulates the functions around the alarm clock Notifications</p>
+<dl class="py attribute">
+<dt id="alarm_clock.notifications.manager.NotificationManager.active_notification_list">
+<code class="sig-name descname">active_notification_list</code><em class="property"> = []</em><a class="headerlink" href="#alarm_clock.notifications.manager.NotificationManager.active_notification_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.notifications.manager.NotificationManager.clear_notifications">
+<code class="sig-name descname">clear_notifications</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.notifications.manager.NotificationManager.clear_notifications" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all notifications from the active list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.notifications.manager.NotificationManager.create_notifications">
+<code class="sig-name descname">create_notifications</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json_input</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.notifications.manager.NotificationManager.create_notifications" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take a JSON input, and create a notification from it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>json_input</strong> – JSON input string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.notifications.manager.NotificationManager.delete_notification">
+<code class="sig-name descname">delete_notification</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">notification_index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.notifications.manager.NotificationManager.delete_notification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a notification from the list of active notifications</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return bool</dt>
+<dd class="field-odd"><p>Returns success status</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="alarm_clock.notifications.manager.NotificationManager.render">
+<code class="sig-name descname">render</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#alarm_clock.notifications.manager.NotificationManager.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of all active notifications HTML string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return list</dt>
+<dd class="field-odd"><p>List of HTML strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Alarm Clock documentation</a><ul>
+<li><a class="reference internal" href="#modules">Modules:</a><ul>
+<li><a class="reference internal" href="#module-alarm_clock.alarm.models">alarm_clock.alarm.models</a></li>
+<li><a class="reference internal" href="#module-alarm_clock.alarm.manager">alarm_clock.alarm.manager</a></li>
+<li><a class="reference internal" href="#module-alarm_clock.information.models">alarm_clock.information.models</a></li>
+<li><a class="reference internal" href="#module-alarm_clock.information.manager">alarm_clock.information.manager</a></li>
+<li><a class="reference internal" href="#module-alarm_clock.notifications.models">alarm_clock.notifications.models</a></li>
+<li><a class="reference internal" href="#module-alarm_clock.notifications.manager">alarm_clock.notifications.manager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">ca3_alarm_clock  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Alarm Clock documentation</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Sam Mason.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+    </div>
+  </body>
+</html>

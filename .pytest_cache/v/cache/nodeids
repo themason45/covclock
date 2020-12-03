@@ -1,0 +1,20 @@
+[
+  "alarm/tests.py::test_alarm_action",
+  "alarm_clock/alarm/test_alarms.py::test_alarm_action",
+  "alarm_clock/alarm/tests.py::test_alarm_action",
+  "alarm_clock/information/test_information.py::test_covid_object",
+  "alarm_clock/information/test_information.py::test_news_manager",
+  "alarm_clock/information/test_information.py::test_weather_object",
+  "alarm_clock/information/tests.py::test_covid_object",
+  "alarm_clock/information/tests.py::test_news_manager",
+  "alarm_clock/information/tests.py::test_weather_object",
+  "alarm_clock/notifications/test_notifications.py::test_creation",
+  "alarm_clock/tests/test_all.py::test_all",
+  "information/tests.py::test_covid_api",
+  "information/tests.py::test_covid_object",
+  "information/tests.py::test_news_api",
+  "information/tests.py::test_news_manager",
+  "information/tests.py::test_weather_api",
+  "information/tests.py::test_weather_object",
+  "tests/test_all.py::test_all"
+]
