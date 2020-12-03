@@ -14,6 +14,11 @@ Please see the [Important details](#Important-details) section.
 
 ## Setup
 
+Clone the repo from GitHub using:
+``` shell script
+    $ git clone git@github.com:themason45/covclock.git
+```
+
 Create a new virtualenv using your favourite virtual env tool (virtualenv, pipenv etc), activate it, 
 and install the requirements:
 ``` shell script

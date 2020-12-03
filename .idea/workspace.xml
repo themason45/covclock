@@ -20,8 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a333d294-fc94-4ccc-ba84-8e28485fba50" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/covclock.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/covclock.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/applog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/applog.txt" afterDir="false" />
@@ -171,7 +169,7 @@
       <workItem from="1606926145519" duration="19597000" />
       <workItem from="1607032394634" duration="72000" />
       <workItem from="1607032470066" duration="233000" />
-      <workItem from="1607032709390" duration="477000" />
+      <workItem from="1607032709390" duration="1164000" />
     </task>
     <task id="LOCAL-00001" summary="Made a couple grammatical fixes, and visual edits">
       <created>1606425000237</created>
@@ -390,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607031060754</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Updated README.md">
+      <created>1607033201946</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1607033201946</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,11 +436,11 @@
     <MESSAGE value="Fixed pytest environment issue" />
     <MESSAGE value="Changed config back to .env" />
     <MESSAGE value="Added License details to README" />
-    <MESSAGE value="Updated README.md" />
     <MESSAGE value="Fixed logging issues" />
     <MESSAGE value="Added logging info to the README.md" />
     <MESSAGE value="Updated docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated docs" />
+    <MESSAGE value="Updated README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated README.md" />
   </component>
   <component name="WindowStateProjectService">
     <state x="358" y="110" key="#Inspections" timestamp="1606585207440">
@@ -463,11 +468,11 @@
       <screen x="0" y="25" width="1440" height="804" />
     </state>
     <state x="467" y="286" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.25.1440.804@0.25.1440.804" timestamp="1606587974470" />
-    <state x="0" y="25" key="CommitChangelistDialog2" timestamp="1607031060554">
+    <state x="0" y="25" key="CommitChangelistDialog2" timestamp="1607033201632">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
     <state x="0" y="25" key="CommitChangelistDialog2/0.25.1440.804/1440.25.1288.921@0.25.1440.804" timestamp="1607027710016" />
-    <state x="0" y="25" key="CommitChangelistDialog2/0.25.1440.804@0.25.1440.804" timestamp="1607031060554" />
+    <state x="0" y="25" key="CommitChangelistDialog2/0.25.1440.804@0.25.1440.804" timestamp="1607033201632" />
     <state width="1398" height="167" key="GridCell.Tab.0.bottom" timestamp="1607032824763">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
@@ -492,11 +497,11 @@
       <screen x="0" y="25" width="1440" height="804" />
     </state>
     <state x="189" y="101" key="SettingsEditor/0.25.1440.804@0.25.1440.804" timestamp="1607032758669" />
-    <state x="320" y="164" key="Vcs.Push.Dialog.v2" timestamp="1607032714667">
+    <state x="320" y="164" key="Vcs.Push.Dialog.v2" timestamp="1607033202631">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
     <state x="320" y="164" key="Vcs.Push.Dialog.v2/0.25.1440.804/1440.25.1288.921@0.25.1440.804" timestamp="1607027712235" />
-    <state x="320" y="164" key="Vcs.Push.Dialog.v2/0.25.1440.804@0.25.1440.804" timestamp="1607032714667" />
+    <state x="320" y="164" key="Vcs.Push.Dialog.v2/0.25.1440.804@0.25.1440.804" timestamp="1607033202631" />
     <state x="521" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607028437312">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
