@@ -19,7 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a333d294-fc94-4ccc-ba84-8e28485fba50" name="Default Changelist" comment="" />
+    <list default="true" id="a333d294-fc94-4ccc-ba84-8e28485fba50" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/covclock.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/covclock.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/applog.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,11 +38,13 @@
       </list>
     </option>
   </component>
-  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" module-name="covclock" is-module-sdk="true">
     <envs>
       <env key="FLASK_APP" value="app" />
     </envs>
     <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myUseModuleSdk" value="true" />
+    <option name="myModuleName" value="covclock" />
     <option name="myEnvs">
       <map>
         <entry key="FLASK_APP" value="app" />
@@ -58,7 +66,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -162,7 +170,8 @@
       <workItem from="1606833915646" duration="10603000" />
       <workItem from="1606926145519" duration="19597000" />
       <workItem from="1607032394634" duration="72000" />
-      <workItem from="1607032470066" duration="43000" />
+      <workItem from="1607032470066" duration="233000" />
+      <workItem from="1607032709390" duration="477000" />
     </task>
     <task id="LOCAL-00001" summary="Made a couple grammatical fixes, and visual edits">
       <created>1606425000237</created>
@@ -459,35 +468,35 @@
     </state>
     <state x="0" y="25" key="CommitChangelistDialog2/0.25.1440.804/1440.25.1288.921@0.25.1440.804" timestamp="1607027710016" />
     <state x="0" y="25" key="CommitChangelistDialog2/0.25.1440.804@0.25.1440.804" timestamp="1607031060554" />
-    <state width="1398" height="167" key="GridCell.Tab.0.bottom" timestamp="1607030844201">
+    <state width="1398" height="167" key="GridCell.Tab.0.bottom" timestamp="1607032824763">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
     <state width="1398" height="167" key="GridCell.Tab.0.bottom/0.25.1440.804/1440.25.1288.921@0.25.1440.804" timestamp="1607027135257" />
-    <state width="1398" height="167" key="GridCell.Tab.0.bottom/0.25.1440.804@0.25.1440.804" timestamp="1607030844201" />
-    <state width="1398" height="167" key="GridCell.Tab.0.center" timestamp="1607030844200">
+    <state width="1398" height="167" key="GridCell.Tab.0.bottom/0.25.1440.804@0.25.1440.804" timestamp="1607032824763" />
+    <state width="1398" height="167" key="GridCell.Tab.0.center" timestamp="1607032824762">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
     <state width="1398" height="167" key="GridCell.Tab.0.center/0.25.1440.804/1440.25.1288.921@0.25.1440.804" timestamp="1607027135257" />
-    <state width="1398" height="167" key="GridCell.Tab.0.center/0.25.1440.804@0.25.1440.804" timestamp="1607030844200" />
-    <state width="1398" height="167" key="GridCell.Tab.0.left" timestamp="1607030844198">
+    <state width="1398" height="167" key="GridCell.Tab.0.center/0.25.1440.804@0.25.1440.804" timestamp="1607032824762" />
+    <state width="1398" height="167" key="GridCell.Tab.0.left" timestamp="1607032824761">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
     <state width="1398" height="167" key="GridCell.Tab.0.left/0.25.1440.804/1440.25.1288.921@0.25.1440.804" timestamp="1607027135256" />
-    <state width="1398" height="167" key="GridCell.Tab.0.left/0.25.1440.804@0.25.1440.804" timestamp="1607030844198" />
-    <state width="1398" height="167" key="GridCell.Tab.0.right" timestamp="1607030844200">
+    <state width="1398" height="167" key="GridCell.Tab.0.left/0.25.1440.804@0.25.1440.804" timestamp="1607032824761" />
+    <state width="1398" height="167" key="GridCell.Tab.0.right" timestamp="1607032824763">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
     <state width="1398" height="167" key="GridCell.Tab.0.right/0.25.1440.804/1440.25.1288.921@0.25.1440.804" timestamp="1607027135257" />
-    <state width="1398" height="167" key="GridCell.Tab.0.right/0.25.1440.804@0.25.1440.804" timestamp="1607030844200" />
-    <state x="229" y="63" key="SettingsEditor" timestamp="1607032512119">
+    <state width="1398" height="167" key="GridCell.Tab.0.right/0.25.1440.804@0.25.1440.804" timestamp="1607032824763" />
+    <state x="189" y="101" key="SettingsEditor" timestamp="1607032758669">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
-    <state x="229" y="63" key="SettingsEditor/0.25.1440.804@0.25.1440.804" timestamp="1607032512119" />
-    <state x="320" y="164" key="Vcs.Push.Dialog.v2" timestamp="1607032015488">
+    <state x="189" y="101" key="SettingsEditor/0.25.1440.804@0.25.1440.804" timestamp="1607032758669" />
+    <state x="320" y="164" key="Vcs.Push.Dialog.v2" timestamp="1607032714667">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
     <state x="320" y="164" key="Vcs.Push.Dialog.v2/0.25.1440.804/1440.25.1288.921@0.25.1440.804" timestamp="1607027712235" />
-    <state x="320" y="164" key="Vcs.Push.Dialog.v2/0.25.1440.804@0.25.1440.804" timestamp="1607032015488" />
+    <state x="320" y="164" key="Vcs.Push.Dialog.v2/0.25.1440.804@0.25.1440.804" timestamp="1607032714667" />
     <state x="521" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607028437312">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
@@ -506,6 +515,7 @@
     <SUITE FILE_PATH="coverage/ca3_alarm_clock$Flask__alarm_clock_app_.coverage" NAME="Flask (alarm_clock.app) Coverage Results" MODIFIED="1607029267172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ca3_alarm_clock$docutils_task_in_docutils_task_in_.coverage" NAME="docutils task in docutils task in docutils task in  Coverage Results" MODIFIED="1606584835691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/ca3_alarm_clock$uni.coverage" NAME="uni Coverage Results" MODIFIED="1606833923250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/covclock$Flask__alarm_clock_app_.coverage" NAME="Flask (alarm_clock.app) Coverage Results" MODIFIED="1607032806524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ca3_alarm_clock$sphinx_task_in_sphinx_task_in_.coverage" NAME="sphinx task in sphinx task in  Coverage Results" MODIFIED="1606706345244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/ca3_alarm_clock$docutils_task_in_docutils_task_in_docutils_task_in_.coverage" NAME="docutils task in docutils task in docutils task in  Coverage Results" MODIFIED="1606577358788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/ca3_alarm_clock$Flask__app_.coverage" NAME="Flask (alarm_clock.app) Coverage Results" MODIFIED="1606784618530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

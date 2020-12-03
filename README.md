@@ -31,6 +31,8 @@ Ensure you have activated the virtualenv, then run the app using:
     $ cd alarm_clock && python -m flask run
 ```
 
+Then head to: [http://127.0.0.1:5000](http://127.0.0.1:5000) to open it.
+
 ## Testing
 
 Ensure you have activated the virtualenv, then run the app using:
